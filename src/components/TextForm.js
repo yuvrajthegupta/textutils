@@ -15,6 +15,22 @@ function TextForm(props) {
         // console.log("On change")
         setText(event.target.value)
     }
+    const handleClearClick=()=>{
+        // console.log("On change")
+        setText("")
+    }
+    const handleReverseClick=()=>{
+        // console.log("On change")
+        setText([...text].reverse().join(''))
+    }
+    const handleCopy=()=>{
+      let copytext=document.getElementById("myBox")
+      copytext.select()
+      navigator.clipboard.writeText(copytext.value)
+    }
+    const handleExtraSpaces=()=>{
+      setText(text.split(/[ ]+/).join(" "))
+    }
   const [text, setText] = useState("");
 
   return (
@@ -26,6 +42,10 @@ function TextForm(props) {
       </div>
       <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-1" onClick={handleLoClick}>Convert to Lowercase</button>
+      <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
+      <button className="btn btn-primary mx-1" onClick={handleReverseClick}>Inverse Text</button>
+      <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
+      <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
     </div>
     <div className="container my-3">
         <h2>Your text Summary</h2>
